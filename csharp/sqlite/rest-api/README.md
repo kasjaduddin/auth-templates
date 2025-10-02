@@ -17,15 +17,17 @@ It includes **token revocation (blacklist)** so that logout is secure and previo
 
 ## 📂 Project Structure
 ```
-/Controllers
-  AuthController.cs
-/Data
-  AuthDbContext.cs
-/Migrations
-  ... (EF Core migration files)
-/Program.cs
-/appsettings.json
-/.env
+rest-api/
+ ├── Controllers/
+ │    └── AuthController.cs
+ ├── Data/
+ │    └── AuthDbContext.cs
+ ├── Migrations/
+ │    └── ... (EF Core migration files)
+ ├── Program.cs
+ ├── appsettings.json
+ ├── .env
+ └── auth.db (runtime, ignored by Git)
 ```
 
 ---
@@ -35,11 +37,11 @@ It includes **token revocation (blacklist)** so that logout is secure and previo
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/kasjaduddin/auth-templates.git
-cd csharp/sqlite
+cd csharp/sqlite/rest-api
 ```
 
 ### 2. Create a `.env` file
-At the root of the project, create a `.env` file:
+At the root of `rest-api/`, create a `.env` file:
 
 ```
 CONNECTIONSTRINGS__DEFAULTCONNECTION=Data Source=auth.db
@@ -105,12 +107,14 @@ Authorization: Bearer <token_from_login>
 
 ---
 
-## 🧪 Testing with Postman
-1. **Register** a new user  
-2. **Login** and copy the returned token  
-3. Access a protected endpoint → should succeed  
-4. **Logout** → token is blacklisted  
-5. Try the protected endpoint again → should return `401 Unauthorized`
+## 🧪 Testing
+- Use **Postman** or the included `sqlite.http` file for quick API testing.  
+- Or build the [`client-module/`](../client-module) and consume the API directly from Unity or Godot.
+
+---
+
+## 🔗 Related Projects
+- [`client-module/`](../client-module): A reusable C# library for Unity and Godot that consumes this API.
 
 ---
 
@@ -119,10 +123,5 @@ Authorization: Bearer <token_from_login>
 - Secrets (JWT key, DB connection string) are managed via `.env`.  
 - SQLite database file (`auth.db`) should not be committed to Git.  
 - EF Core migrations are included so the schema can be rebuilt anywhere.
-
----
-
-## 📜 License
-This project is provided as-is for learning and template purposes. You are free to adapt and extend it for your own applications.
 
 ---
