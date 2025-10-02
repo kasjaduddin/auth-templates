@@ -124,6 +124,5 @@ Authorization: Bearer <token_from_login>
 
 ## 📜 License
 This project is provided as-is for learning and template purposes. You are free to adapt and extend it for your own applications.
-```
 
 ---
