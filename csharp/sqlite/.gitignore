@@ -1,0 +1,21 @@
+# Build output
+bin/
+obj/
+
+# SQLite database files
+*.db
+*.db-shm
+*.db-wal
+
+# Environment / secrets
+.env
+
+# IDE / user-specific
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
